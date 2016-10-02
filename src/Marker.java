@@ -5,11 +5,11 @@
  */
 public abstract class Marker {
 
-
     private Position position;
-    protected Board board;
+    private char symbol;
 
-    public Marker(){
+    public Marker(Position p){
+        position = p;
     }
 
     public Position getPosition() {
@@ -18,5 +18,12 @@ public abstract class Marker {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public char getSymbol() {
+        return symbol;
+    }
+    public void setSymbol(char symbol) {
+        this.symbol = symbol;
     }
 }

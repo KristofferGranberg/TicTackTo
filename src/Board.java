@@ -7,7 +7,7 @@ public class Board {
 
     private char[][] grid;
     private final int gridWidth = 3;
-    private final int gridHeight =3;
+    private final int gridHeight = 3;
     private final char emptySpace = '.';
     private final char crossSpace = 'x';
     private final char circleSpace = 'o';
@@ -32,6 +32,16 @@ public class Board {
     public void setCircleSpace(Position p){
         grid[p.getX()][p.getY()] = circleSpace;
     }
+    public int getGridWidth(){
+        return gridWidth;
+    }
+    public int getGridHeight() {
+        return gridHeight;
+    }
+    public boolean checkValidPossition(Position p){
+        return (p.getY() > gridHeight || p.getY() < 0 || p.getX() > gridWidth
+                || p.getX() < 0);
+    }
 
     /**
      * method that checks all possibilities of 3 in a row.
@@ -40,13 +50,13 @@ public class Board {
     public boolean isComplete(){
 
         //checks if circle has 3 in a row
-        for(int y = 0;y < 2;y++){
+        for(int y = 0;y < gridHeight;y++){
             if(isCrossSpace(new Position(0,y)) && isCrossSpace(new Position
                     (1,y)) && isCrossSpace(new Position(2,y))){
                 return true;
             }
         }
-        for(int x = 0;x < 2;x++) {
+        for(int x = 0;x < gridWidth;x++) {
             if (isCrossSpace(new Position(x, 0)) && isCrossSpace(new Position
                     (x, 1)) && isCrossSpace(new Position(x, 2))) {
                 return true;
@@ -63,13 +73,13 @@ public class Board {
             return true;
         }
         // checks if circle has 3 in a row
-        for(int y = 0;y < 2;y++){
+        for(int y = 0;y < gridHeight;y++){
             if(isCircleSpace(new Position(0,y)) && isCircleSpace(new
                     Position(1,y)) && isCircleSpace(new Position(2,y))){
                 return true;
             }
         }
-        for(int x = 0;x < 2;x++) {
+        for(int x = 0;x < gridWidth;x++) {
             if (isCircleSpace(new Position(x, 0)) && isCircleSpace(new Position
                     (x, 1)) && isCircleSpace(new Position(x, 2))) {
                 return true;
@@ -90,7 +100,7 @@ public class Board {
         }
 
 
-        /* STUPID STUFF... works thou...
+        /* STUPID SHIT!! should work thou...
 
         if cross has three in a row.
         // case 1
@@ -200,5 +210,4 @@ public class Board {
     public boolean isCircleSpace(Position p){
         return grid[p.getX()][p.getY()] == circleSpace;
     }
-
 }
