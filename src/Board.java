@@ -6,14 +6,17 @@
 public class Board {
 
     private char[][] grid;
-    private final int gridWidth = 3;
-    private final int gridHeight = 3;
+    private int gridWidth;
+    private int gridHeight;
     private final char emptySpace = '.';
-    private final char crossSpace = 'x';
-    private final char circleSpace = 'o';
+    private final char crossSpace = 'X';
+    private final char circleSpace = 'O';
 
 
-    public Board(){
+    public Board(int width,int height){
+
+        gridWidth = width;
+        gridHeight = height;
         grid = new char[gridWidth][gridHeight];
 
         for(int x = 0;x < gridWidth;x++){
@@ -209,5 +212,15 @@ public class Board {
     }
     public boolean isCircleSpace(Position p){
         return grid[p.getX()][p.getY()] == circleSpace;
+    }
+    public String toString(){
+        String boardString = "";
+        for(int y = 0;y < gridHeight;y++){
+            for (int x = 0;x < gridWidth;x++){
+                boardString += grid[x][y];
+            }
+            boardString += '\n';
+        }
+        return boardString;
     }
 }
